@@ -1,17 +1,88 @@
-## Bits and Volts MERN Assessment
+# Bits and Volts User Management System
 
-This project implements the Bits and Volts Pvt. Ltd. MERN stack intern assessment: a user management app with CRUD, search, pagination, CSV export, and responsive UI.
+A comprehensive user management application built with the MERN stack (MongoDB, Express.js, React.js, Node.js). This application provides full CRUD functionality, search, pagination, CSV export, and a responsive UI.
 
-### Project structure
+## 🏗️ Project Architecture
 
-- **server**: Node.js/Express/MongoDB backend
-  - CRUD APIs for users with pagination and search
-  - CSV export endpoint
-  - File upload for profile image
-- **client**: React (Vite) frontend with Material UI
-  - List, Add/Edit, and View details pages
-  - React Router based navigation
-  - Client-side validation and notifications
+```mermaid
+graph TD
+    A[Client] -->|HTTP Requests| B[Express Server]
+    B -->|MongoDB Queries| C[(MongoDB Atlas)]
+    B -->|File Operations| D[(File Storage)]
+    
+    subgraph Frontend
+    A -->|React Components| E[User Interface]
+    E -->|State Management| F[React Hooks]
+    end
+    
+    subgraph Backend
+    B -->|REST API| G[Controllers]
+    G -->|Data Access| H[Models]
+    end
+    
+    style A fill:#61dafb,stroke:#333,stroke-width:2px
+    style B fill:#68a063,stroke:#333,stroke-width:2px
+    style C fill:#13aa52,stroke:#333,stroke-width:2px
+    style D fill:#ff9900,stroke:#333,stroke-width:2px
+```
+
+## 📁 Project Structure
+
+```
+bits-and-volts-user-management/
+├── client/                    # React frontend
+│   ├── public/               # Static files
+│   ├── src/
+│   │   ├── assets/           # Images, fonts, etc.
+│   │   ├── components/       # Reusable UI components
+│   │   │   ├── feedback/     # Notification components
+│   │   │   ├── layout/       # Layout components
+│   │   │   └── users/        # User-related components
+│   │   ├── pages/            # Page components
+│   │   ├── services/         # API service layer
+│   │   ├── App.jsx           # Main App component
+│   │   └── main.jsx          # Entry point
+│   ├── .env.example          # Environment variables example
+│   └── package.json          # Frontend dependencies
+│
+├── server/                   # Node.js/Express backend
+│   ├── src/
+│   │   ├── config/          # Configuration files
+│   │   ├── controllers/     # Request handlers
+│   │   ├── middleware/      # Custom middleware
+│   │   ├── models/          # Database models
+│   │   ├── routes/          # API routes
+│   │   └── index.js         # Server entry point
+│   ├── .env.example         # Environment variables example
+│   ├── package.json         # Backend dependencies
+│   └── uploads/             # File uploads (not versioned)
+│
+├── .gitignore
+├── README.md                # This file
+└── package.json             # Root package.json (optional)
+```
+
+### Key Features
+
+- **Frontend (React)**
+  - Modern, responsive UI with Material-UI components
+  - Form validation and error handling
+  - Client-side routing with React Router
+  - State management with React Hooks
+  - CSV export functionality
+
+- **Backend (Node.js/Express)**
+  - RESTful API design
+  - JWT authentication (if implemented)
+  - File upload handling with Multer
+  - MongoDB integration with Mongoose
+  - Error handling middleware
+  - Request validation
+
+- **Database (MongoDB)**
+  - Flexible schema design
+  - Indexed queries for better performance
+  - Data validation at the model level
 
 ### Prerequisites
 
